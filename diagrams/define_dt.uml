@@ -1,0 +1,20 @@
+@startuml
+box "User Network" #LightPink
+participant actor as a1
+end box
+
+box "DT Service Network" #LightBlue
+boundary    ingress as ingress
+control     server as "API Service"
+entity      dt1    as "DT1"
+entity      dt2    as "DT2"
+entity      dt3    as "DT3"
+entity      dtn    as "DT(n)"
+end box
+database    db1  as "Event-source store"
+
+a1 -> ingress
+ingress -> server
+server -> dt1
+dt1 -> db1
+@enduml
